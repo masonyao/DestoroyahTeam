@@ -1,7 +1,14 @@
 package com.destoroyah.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,7 +25,7 @@ import com.destoroyah.service.UserService;
 @CrossOrigin(origins="*")
 public class PostController {
 	
-	private PostService poster;
+	private PostService post;
 	private UserService user;
 	
 	@RequestMapping(value="/postIn.app", method = RequestMethod.POST)
@@ -35,5 +42,44 @@ public class PostController {
 		user.postMan(id);
 		return p;
 	}
+	
+//	@GetMapping(value="getAll.app")
+//	public ResponseEntity<List<Post>> getAll(){
+//		return new ResponseEntity<List<Post>>(post.getAll(), HttpStatus.OK);
+//	}
+	
+	@RequestMapping(value="/getAll.app", method=RequestMethod.POST)
+	public @ResponseBody List<Post> getAll(){
+//		List<Post> userPosts = new ArrayList<Post>();
+//		List<Post> temp = post.getAll();
+//		for(int i=0;i<temp.size();i++) {
+//			if(temp.get(i).getUser().getUser_id()==id) {
+//				userPosts.add(temp.get(i));
+//			}
+		return post.getAll();
+		}
+	
+
+	
+	public PostService getPost() {
+		return post;
+	}
+
+	@Autowired
+	public void setPost(PostService post) {
+		this.post = post;
+	}
+
+
+	public UserService getUser() {
+		return user;
+	}
+
+
+	@Autowired
+	public void setUser(UserService user) {
+		this.user=user;
+	}
+
 
 }

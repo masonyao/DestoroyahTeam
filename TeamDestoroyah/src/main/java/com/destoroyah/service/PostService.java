@@ -1,5 +1,7 @@
 package com.destoroyah.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,12 +18,10 @@ public class PostService {
 		pd.insert(p);
 	}
 	
-//	public int insertBySql(Post p) {
-//		return pd.inserBySql(p);
-//	}
-	
-	
-
+	public List<Post> getAll(){
+		return pd.findAll();
+	}
+		
 	public PostDao getPd() {
 		return pd;
 	}

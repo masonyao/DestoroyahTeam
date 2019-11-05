@@ -1,6 +1,6 @@
 package com.destoroyah.model;
 
-import java.sql.Timestamp; 
+import java.sql.Timestamp;  
 
 import java.util.HashSet;
 

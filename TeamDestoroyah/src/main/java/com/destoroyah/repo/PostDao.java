@@ -42,6 +42,8 @@ public class PostDao{
 		return ses.createQuery("from Post", Post.class).list();
 
 	}
+	
+	
 
 	public Post findById(int id) {
 		Session ses = sesFact.getCurrentSession();
@@ -49,15 +51,6 @@ public class PostDao{
         return p;
 	}
 
-	
-	//useless
-//	public int inserBySql(Post p) {
-//		JdbcTemplate template = new JdbcTemplate(dataSource);
-//		
-//		String sql = "insert into post VALUES ('"+p.getId()+"','"+p.getContent()+"','"+p.getDate()+"','"+p.getUser().getUser_id()+"')";
-//		  return template.update(sql);
-//	}
-	    
 	
 
 	public void insert(Post t) {
